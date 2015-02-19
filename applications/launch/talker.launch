@@ -1,0 +1,4 @@
+<launch>
+  <node pkg="talker" name="talker" type="talker.py"></node>
+  <include file="$(find rosbridge_server)/launch/rosbridge_websocket_client.launch" />
+</launch>
