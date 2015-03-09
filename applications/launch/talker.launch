@@ -1,4 +1,8 @@
 <launch>
+  <arg name="url" default="ws://localhost:9090" />
+
   <node pkg="talker" name="talker" type="talker.py"></node>
-  <include file="$(find rosbridge_server)/launch/rosbridge_websocket_client.launch" />
+  <include file="$(find rosbridge_server)/launch/rosbridge_websocket_client.launch">
+    <arg name="url" value="$(arg url)" />
+  </include>
 </launch>
