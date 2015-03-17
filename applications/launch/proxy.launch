@@ -1,5 +1,10 @@
 <launch>
   <arg name="server_url" />
+  <arg name="video_device" default="/dev/video0" />
+  <node pkg="usb_cam" name="usb_cam_node" type="usb_cam_node">
+  <param name="video_device" value="$(arg video_device)" />
+  </node>
+  <node pkg="web_video_server" name="web_video_server" type="web_video_server"></node>
   <node pkg="talker" name="talker" type="talker.py"></node>
   <include file="$(find rosbridge_server)/launch/rosbridge_websocket_client.launch">
     <arg name="webserver_uri" value="$(arg server_url)"/>
